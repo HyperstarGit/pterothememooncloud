@@ -4,7 +4,7 @@ BLUE='\033[0;34m'.
 NO_COLOR='\033[0m'
 
 if (( $EUID != 0 )); then
-    echo "Please run as root"
+    echo "Por favor run com root"
     exit
 fi
 
@@ -12,12 +12,12 @@ clear
 
 installTheme(){
     cd /var/www/
-    tar -cvf IceMinecraftTheme.tar.gz pterodactyl
-    echo "Installing theme..."
+    tar -cvf pterothememooncloud.tar.gz pterodactyl
+    echo "Instalando tema.."
     cd /var/www/pterodactyl
-    rm -r IceMinecraftTheme
-    git clone https://github.com/Angelillo15/IceMinecraftTheme.git
-    cd IceMinecraftTheme
+    rm -r pterothememooncloud
+    git clone https://github.com/markosvr/pterothememooncloud.git
+    cd pterothememooncloud
     rm /var/www/pterodactyl/resources/scripts/IceMinecraftTheme.css
     rm /var/www/pterodactyl/resources/scripts/index.tsx
     rm /var/www/pterodactyl/resources/scripts/components/server/console/Console.tsx
@@ -42,7 +42,7 @@ installTheme(){
 
 installThemeQuestion(){
     while true; do
-        read -p "Are you sure that you want to install the theme [y/N]? " yn
+        read -p "Certeza que quer instalar o tema? [y/N]? " yn
         case $yn in
             [Yy]* ) installTheme; break;;
             [Nn]* ) exit;;
@@ -56,9 +56,9 @@ repair(){
 }
 
 restoreBackUp(){
-    echo "Restoring backup..."
+    echo "Restaurando o backup..."
     cd /var/www/
-    tar -xvf IceMinecraftTheme.tar.gz
+    tar -xvf pterothememooncloud.tar.gz
     rm IceMinecraftTheme.tar.gz
 
     cd /var/www/pterodactyl
@@ -66,31 +66,19 @@ restoreBackUp(){
     sudo php artisan optimize:clear
 }
                                                                                                                            
-printf "${blue} ____       _____        ______          _________________  ____   ____      ______        ______  _______        ______    \n"
-printf "${blue}|    |  ___|\    \   ___|\     \        /                 \|    | |    | ___|\     \      |      \/       \   ___|\     \   \n"
-printf "${blue}|    | /    /\    \ |     \     \       \______     ______/|    | |    ||     \     \    /          /\     \ |     \     \  \n"
-printf "${blue}|    ||    |  |    ||     ,_____/|         \( /    /  )/   |    |_|    ||     ,_____/|  /     /\   / /\     ||     ,_____/| \n"
-printf "${blue}|    ||    |  |____||     \--'\_|/          ' |   |   '    |    .-.    ||     \--'\_|/ /     /\ \_/ / /    /||     \--'\_|/ \n"
-printf "${blue}|    ||    |   ____ |     /___/|              |   |        |    | |    ||     /___/|  |     |  \|_|/ /    / ||     /___/|   \n"
-printf "${blue}|    ||    |  |    ||     \____|\            /   //        |    | |    ||     \____|\ |     |       |    |  ||     \____|\  \n"
-printf "${blue}|____||\ ___\/    /||____ '     /|          /___//         |____| |____||____ '     /||\____\       |____|  /|____ '     /| \n"
-printf "${blue}|    || |   /____/ ||    /_____/ |         |    |          |    | |    ||    /_____/ || |    |      |    | / |    /_____/ | \n"
-printf "${blue}|____| \|___|    | /|____|     | /         |____|          |____| |____||____|     | / \|____|      |____|/  |____|     | / \n"
-printf "${blue}  \(     \( |____|/   \( |_____|/            \(              \(     )/    \( |_____|/     \(          )/       \( |_____|/  \n"
-printf "${blue}   '      '   )/       '    )/                '               '     '      '    )/         '          '         '    )/     \n"
-printf "${blue}              '             '                                                   '                                    '      \n"
+printf "${blue} Mooncloud-theme \n"
 echo ""
-echo "Copyright (c) 2022 Angelillo15 | angelillo15.es"
+echo "Copyright (c) 2023 Angelillo15 | angelillo15.es"
 echo "This program is free software: you can redistribute it and/or modify"
 echo ""
-echo "Discord: https://discord.angelillo15.es/"
+echo "Discord: https://nop"
 echo "Website: https://angelillo15.es/"
 echo ""
-echo "[1] Install theme"
-echo "[2] Restore backup"
-echo "[3] Repair panel (use if you have an error in the theme installation)"
-echo "[4] Update the panel"
-echo "[5] Exit"
+echo "[1] Instalar tema"
+echo "[2] Restaurar backup"
+echo "[3] Reparar"
+echo "[4] Atualizar panel"
+echo "[5] Sair"
 printf "${NO_COLOR}"
 
 read -p "Please enter a number: " choice
